@@ -1,0 +1,32 @@
+# Replace problematic characters with standard ASCII equivalents
+clean_intro = content["intro"].replace("’", "'")
+clean_protection = content["protection"].replace("’", "'")
+clean_facts = [fact.replace("’", "'") for fact in updated_facts]
+
+# Create the PDF again with cleaned text
+pdf = PDF()
+pdf.set_auto_page_break(auto=True, margin=15)
+pdf.add_page()
+
+# Adding Content
+pdf.chapter_title("Introduction")
+pdf.chapter_body(clean_intro)
+
+# Add image
+pdf.add_image(converted_image_path, x=40, y=60, w=130, h=100)
+pdf.ln(110)
+
+# Add facts
+pdf.chapter_title("Fun Facts About Cheetahs")
+for fact in clean_facts:
+    pdf.chapter_body(f"- {fact}")
+
+# Add protection content
+pdf.chapter_title("How Can We Protect Cheetahs?")
+pdf.chapter_body(clean_protection)
+
+# Save the corrected PDF
+pdf_path = "/mnt/data/Cheetahs_For_Children.pdf"
+pdf.output(pdf_path)
+
+pdf_path

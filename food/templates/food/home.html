@@ -1,0 +1,518 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{pages_names.page}}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+  <style>
+
+
+   
+    /* General Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f9fafc;
+    }
+
+    /* Navbar Styling */
+    header {
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 10px 0;
+    }
+
+    .navbar-brand {
+      font-size: 24px;
+      font-weight: regular;
+      color:rgb(0, 0, 0);
+      width:100px;
+
+    }
+
+    .nav-link {
+      color: #333;
+      font-size: 19px;
+      transition: color 0.3s ease;
+      margin:7px;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: white; /* Ensures text is white */
+      background:#E23744;
+      border-radius: 10px;
+    }
+    
+
+    /* Hero Section */
+    .hero {
+      background:#E23744;
+      color: white;
+      text-align: center;
+      padding: 50px 0;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 18px;
+    }
+
+    /* Search and Buttons */
+    .search-bar {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin: 20px 0;
+    }
+
+    .btn-outline-primary {
+      border-color:#E23744;
+      color:rgb(0, 0, 0);
+    }
+
+    .btn-outline-primary:hover {
+      background: #E23744;
+
+      color: #fff;
+    }
+
+    /* Card Styling */
+    .card {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-body h5 {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* Footer Styling */
+    footer {
+      background:#E23744;
+      color: #333333;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    footer a:hover {
+      color: #b2ee90;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .nav-link {
+        font-size: 14px;
+      }
+    }
+
+
+    /* Aesthetic User Review Section */
+    section.container {
+        padding-top: 28px;
+    }
+    
+    /* Review Card Styles */
+    .review-card {
+        border-radius: 15px; /* Rounded corners for a soft look */
+        border: 1px solid #ddd; /* Subtle border for separation */
+        background: #fff; /* Clean white background */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effects */
+    }
+    
+    .review-card:hover {
+        transform: translateY(-5px); /* Slight lift on hover */
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+    }
+    
+    /* User Information Section (Avatar + Name) */
+    .user-info {
+        display: flex;
+        align-items: center;
+    }
+    
+    .user-avatar {
+        border-radius: 50%; /* Circular avatar */
+        width: 120px;
+        height: 30px;
+        object-fit: cover; /* Ensures the image fits inside the circle */
+    }
+    
+    .card-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333; /* Dark text for good contrast */
+    }
+    
+    .card-subtitle {
+        font-size: 14px;
+        color: #777; /* Subtle text for the location */
+    }
+    
+    /* Review Text Styling */
+    .card-text {
+        font-size: 15px;
+        color: #555; /* Slightly lighter text */
+        line-height: 1.6; /* Increases line spacing for readability */
+        padding-top: 10px;
+    }
+    
+    /* Section Header Styling */
+    h3.text-primary {
+        font-size: 28px;
+        font-weight: 700;
+        color: #4ec40a; /* Fresh, modern color */
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .card-title {
+            font-size: 14px;
+        }
+    
+        .card-text {
+            font-size: 13px;
+        }
+    }
+    h3.text-center.mb-4 {
+      color: black; /* Changes color to black */
+  }
+  .counter-widget {
+    background-color: #f9fafc;
+    padding: 40px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .counter-item {
+    font-size: 24px;
+    font-weight: bold;
+    color: #E23744; /* Pink color */
+    padding: 15px;
+  }
+  
+  .counter {
+    font-size: 48px;
+    color: #333; /* Text color */
+    font-weight: bold;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  @media (max-width: 768px) {
+    .counter-item {
+      font-size: 18px;
+    }
+  
+    .counter {
+      font-size: 32px;
+    }
+  }
+  
+ .top6_h1 {
+    text-align: center;
+    padding: 20px;
+    background-color: #E23744;
+    color: white;
+    margin: 0;
+    border-bottom: 3px solid #ddd;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.vendor-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+.vendor-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 250px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.vendor-card:hover {
+    transform: scale(1.05);
+}
+
+.vendor-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color:#E23744;
+    margin-bottom: 10px;
+}
+
+.vendor-info {
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.vendor-info span {
+    color: #777;
+}
+
+.rating {
+    background-color:#E23744;
+    color: #ffffff;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+    
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <a class="navbar-brand" >
+
+          <img src="{% static 'DineMap.png' %}">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Food AI</a></li>
+            <li class="nav-item">  <a class="nav-link" href="http://127.0.0.1:8000/reviews/">Reviews</a>
+            </li>
+
+            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Find Your Perfect Meal</h1>
+    <p>Find the best Food,Restaurants Recommendations & Reviews</p>
+  </section>
+
+  <section class="counter-widget text-center my-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="counter-item">
+          <h2 class="counter" data-target="250">250+</h2>
+          <p>Restaurants</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="counter-item">
+          <h2 class="counter" data-target="1000">1000+</h2>
+          <p>Menu Items</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="counter-item">
+          <h2 class="counter" data-target="100">100+</h2>
+          <p>Locations</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Popular Queries -->
+  <div class="container my-4">
+    <h3 class="text-center mb-4">Popular Queries</h3>
+    <div class="d-flex flex-wrap justify-content-center">
+      <button class="btn btn-outline-primary m-2">Best Zinger Burger in 500</button>
+      <button class="btn btn-outline-primary m-2">Best Pizza in 1000</button>
+      <button class="btn btn-outline-primary m-2">Best Desi Food with 4+ ratings</button>
+      <button class="btn btn-outline-primary m-2">Top Romantic Restaurants</button>
+      <button class="btn btn-outline-primary m-2">Top Family Restaurants</button>
+    </div>
+  </div>
+
+
+<!-- User Review Section -->
+<!-- User Review Section -->
+<section class="container my-5">
+  <h3 class="text-center mb-4" style="color: black;">User Reviews</h3>
+  <div class="row">
+      <!-- Review 1 -->
+      <div class="col-md-4">
+          <div class="card review-card">
+              <div class="card-body">
+                  <div class="user-info mb-3">
+                    <img src="{% static 'usama.jpg' %}" alt="User Avatar" class="user-avatar">
+                      <h5 class="card-title ms-3">@Usama on KFC-Autobhan Road</h5>
+                  </div>
+                  <h6 class="card-subtitle mb-2 text-muted">KFC, Autobhan Road</h6>
+                  <p class="card-text">"Visited the newly opened branch of KFC at Autobhan. What an ambiance, damn! Highly recommend for the vibrant atmosphere and delicious food!"</p>
+              </div>
+          </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="col-md-4">
+          <div class="card review-card">
+              <div class="card-body">
+                  <div class="user-info mb-3">
+                    <img src="{% static 'usama.jpg' %}" alt="User Avatar" class="user-avatar">
+                      <h5 class="card-title ms-3">@Sarah on Kababjees-M.G Road</h5>
+                  </div>
+                  <h6 class="card-subtitle mb-2 text-muted">Kababjees, M.G Road</h6>
+                  <p class="card-text">"Kababjees never disappoints! The food is always top-notch, and the staff is very friendly. A must-visit for anyone craving delicious desi food!"</p>
+              </div>
+          </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="col-md-4">
+          <div class="card review-card">
+              <div class="card-body">
+                  <div class="user-info mb-3">
+                    <img src="{% static 'usama.jpg' %}" alt="User Avatar" class="user-avatar">
+                      <h5 class="card-title ms-3">@Ali on McDonald's-Jubilee Road</h5>
+                  </div>
+                  <h6 class="card-subtitle mb-2 text-muted">McDonald's, Jubilee Road</h6>
+                  <p class="card-text">"McDonald's never gets old! A great place for a quick bite, especially for the kids. Always clean and the staff are really welcoming!"</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+  <!-- Popular Restaurants -->
+  <section class="container my-5">
+    <h3 class="text-center mb-4">Popular Restaurants of the Week</h3>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'kfc.jpg' %}" class="card-img-top" alt="KFC">
+          <div class="card-body">
+            <h5>KFC</h5>
+            <p>Main Boulevard, Hyderabad</p>
+            <p>Rating: 4.5/5</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'Kababjees.jpg' %}" class="card-img-top" alt="Kababjees">
+          <div class="card-body">
+            <h5>Kababjees</h5>
+            <p>M.G Road, Hyderabad</p>
+            <p>Rating: 4.7/5</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'mc.jpg' %}" class="card-img-top" alt="McDonalds">
+          <div class="card-body">
+            <h5>McDonald's</h5>
+            <p>Jubilee Road, Hyderabad</p>
+            <p>Rating: 4.2/5</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <h1 class="top6_h1"> Popular Restaurants In Hyderabad,Pakistan</h1>
+    
+  <div class="vendor-list">
+      {% for vendor in top5_vendors %}
+          <div class="vendor-card">
+
+              <div class="vendor-name">{{ vendor.vendor_name }} </div>
+
+              <div class="vendor-info">
+                  <strong>Rating:</strong> <span class="rating">{{ vendor.overall_rating }}</span>
+              </div>
+
+              <div class="vendor-info">
+                  <strong>Total Ratings:</strong> {{ vendor.total_ratings }}
+              </div>
+
+              <div class="vendor-info">
+                  <strong>Location:</strong> {{ vendor.location }}
+              </div>
+          </div>
+      {% endfor %}
+  </div>
+ 
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Food Finder | Designed by Usama Ahmed</p>
+    <p>Follow us on <a href="#">Facebook</a> and <a href="#">Instagram</a></p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
