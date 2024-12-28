@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>r</title>
+    <style>
+        /* General Styling */
+        * {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          text-decoration: none;
+          box-sizing: border-box;
+        }
+    
+        body {
+          font-family: 'Poppins', sans-serif;
+          background: #f9fafc;
+        }
+    
+        /* Navbar Styling */
+        header {
+          background: #ffffff;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          padding: 10px 0;
+        }
+    
+        .navbar-brand {
+          font-size: 24px;
+          font-weight: regular;
+          color:rgb(0, 0, 0);
+          width:100px;
+    
+        }
+    
+        .nav-link {
+          color: #333333;
+          font-size: 19px;
+          transition: color 0.3s ease;
+          margin:7px;
+        }
+    
+        .nav-link:hover, .nav-link.active {
+          color: #ffffff; /* Ensures text is white */
+          background:#E23744;
+          border-radius: 10px;
+        }
+        
+    
+        /* Hero Section */
+        .hero {
+          background:#E23744;
+          color: white;
+          text-align: center;
+          padding: 50px 0;
+        }
+    
+        .hero h1 {
+          font-size: 48px;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+    
+        .hero p {
+          font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+            <a class="navbar-brand" >
+    
+              <img src="{% static 'DineMap.png' %}">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Food AI</a></li>
+                <li class="nav-item">  <a class="nav-link" href="http://127.0.0.1:8000/reviews/">Reviews</a>
+                </li>
+    
+                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+
+      <section class="hero">
+        <h1>Find Your Perfect Meal</h1>
+        <p>Find the best Food,Restaurants Recommendations & Reviews</p>
+      </section>
+      
+ <h1 class="text-center"> 
+    
+{% if form.instance.pk%}
+
+Edit Review
+
+{%else%}
+
+Submit a Review
+
+{%endif%}
+
+</h1>
+
+
+
+
+
+</div>
+
+
+</html>

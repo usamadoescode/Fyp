@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Delete Review</title>
+    <style>
+        /* General Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f9fafc;
+        }
+
+        /* Navbar Styling */
+        header {
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+        
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            width: 100px;
+        }
+
+        .nav-link {
+            color: black !important;
+            font-size: 19px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            margin: 7px;
+            border-radius: 10px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
+            background: #E23744;
+            border-radius: 10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #E23744;
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: bold;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .btn-danger {
+            margin: 10px;
+            width: 120px;
+        }
+
+        .btn-success {
+            margin: 10px;
+            width: 120px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand">
+                    <img src="{% static 'DineMap.png' %}" alt="Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Food AI</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/reviews/">Reviews</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#">Post Review</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="form-container">
+        <h1>Are you sure you want to delete this review?</h1>
+        <p><strong>{{ review.title }}</strong></p>
+        <form method="post">
+            {% csrf_token %}
+            <button class="btn btn-danger" type="submit">Delete</button>
+            <a class="btn btn-success" href="{% url 'Reviews_List' %}">Cancel</a>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

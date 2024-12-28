@@ -31,29 +31,31 @@
       background: #ffffff;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       padding: 10px 0;
-    }
-
-    .navbar-brand {
+  }
+  
+  .navbar-brand {
       font-size: 24px;
-      font-weight: regular;
-      color:rgb(0, 0, 0);
-      width:100px;
-
-    }
-
-    .nav-link {
-      color: #333;
+      font-weight: bold;
+      color: rgb(0, 0, 0);
+      width: 100px;
+  }
+  
+  /* Default link color: Black */
+  .nav-link {
+      color: black !important; /* Ensures black color is enforced */
       font-size: 19px;
-      transition: color 0.3s ease;
-      margin:7px;
-    }
-
-    .nav-link:hover, .nav-link.active {
-      color: white; /* Ensures text is white */
-      background:#E23744;
+      transition: color 0.3s ease, background-color 0.3s ease;
+      margin: 7px;
       border-radius: 10px;
-    }
-    
+  }
+  
+  /* Hover state: White text with red background */
+  .nav-link:hover, .nav-link.active {
+      color: white !important;
+      background: #E23744;
+      border-radius: 10px;
+  }
+  
 
     /* Hero Section */
     .hero {
@@ -335,7 +337,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" href="http://127.0.0.1:8000">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Food AI</a></li>
             <li class="nav-item">  <a class="nav-link" href="http://127.0.0.1:8000/reviews/">Reviews</a>
             </li>
